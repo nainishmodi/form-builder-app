@@ -89,7 +89,7 @@ const FormBuilder = () => {
 
     return (
         <>
-            <div className="container-fluid h-100 bg-light text-dark">
+            <div className="container-fluid h-100 text-dark">
                 <div className="row justify-content-center align-items-center h-100">
                     <div className="col col-sm-9 col-md-9 col-lg-6 col-xl-6">
                         <form autoComplete="off" id="form-builder" onSubmit={handleSubmit}>

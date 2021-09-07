@@ -44,7 +44,7 @@ const FormView = () => {
   return (
     <>
       <h4 className="form-name text-center">{form.formName}</h4>
-      <div className="container-fluid h-100 bg-light text-dark" id="form-view">
+      <div className="container-fluid h-100 text-dark" id="form-view">
         <div className="row justify-content-center align-items-center h-100">
           <div className="col col-sm-9 col-md-9 col-lg-6 col-xl-6">
             <form onSubmit={handleSubmit} autoComplete="off">
