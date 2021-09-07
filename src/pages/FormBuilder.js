@@ -95,7 +95,7 @@ const FormBuilder = () => {
                         <form autoComplete="off" id="form-builder" onSubmit={handleSubmit}>
                             <div className="mb-1">
                                 <label htmlFor="form-name" id="form-name-label" className="form-label">Form Name</label>
-                                <input type="text" className="form-control" id="form-name" value={formName} onChange={(e) => setFormName(e.target.value)}/>
+                                <input type="text" className="form-control" id="form-name" placeholder="Minimum 3 characters required." value={formName} onChange={(e) => setFormName(e.target.value)}/>
                             </div>
                             <br/>
                             <div className="text-center">
