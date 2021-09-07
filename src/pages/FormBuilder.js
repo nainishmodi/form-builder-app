@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { setForm } from '../store/formBuilder/formBuilderActions';
 import Modal from '../components/Modal';
@@ -15,6 +15,8 @@ const FormBuilder = () => {
     const [showModal, setShowModal] = useState(false);
     const [formName, setFormName] = useState("");
     const [formQuestions, setFormQuestions] = useState(initQuestions);
+    const questionTitleRef = useRef();
+    const choicesRef = useRef();
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -30,11 +32,13 @@ const FormBuilder = () => {
         //Some validations
         if(!formQuestions.questionTitle.trim()) {
             alert('Please enter Question/Title');
+            questionTitleRef.current.focus();
             return;
         }
         //If choices are blank and user tried to submit record
         if(formQuestions.questionType !== 'text' && questionLists.length === 0) {
             alert('Please enter multiple choices.');
+            choicesRef.current.focus();
             return;
         }
         const { questionTitle, questionType } = formQuestions;
@@ -137,7 +141,7 @@ const FormBuilder = () => {
                                         <div className="modal-body">
                                             <div className="form-group">
                                                 <label htmlFor="questionTitle">Question / Title</label>
-                                                <input type="text" className="form-control" id="questionTitle" name="questionTitle" value={formQuestions.questionTitle} onChange={handleInput}/>
+                                                <input type="text" ref={questionTitleRef} className="form-control" id="questionTitle" name="questionTitle" value={formQuestions.questionTitle} onChange={handleInput}/>
                                             </div>
                                             <div className="form-group">
                                                 <label htmlFor="questionType">Answer Type</label>
@@ -151,7 +155,7 @@ const FormBuilder = () => {
                                                 (formQuestions.questionType === 'checkbox' || formQuestions.questionType === 'radio') && 
                                                 <>
                                                    <label htmlFor="lists">Lists</label>
-                                                   <textarea rows="6" className="form-control" name="questionLists" value={formQuestions.questionLists} onChange={handleInput} placeholder="To enter multiple choices press enter after writing dedicated texts."></textarea>
+                                                   <textarea ref={choicesRef} rows="6" className="form-control" name="questionLists" value={formQuestions.questionLists} onChange={handleInput} placeholder="To enter multiple choices press enter after writing dedicated texts."></textarea>
                                                 </>
                                             }
                                         </div>
