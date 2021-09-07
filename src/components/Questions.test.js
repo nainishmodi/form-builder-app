@@ -8,7 +8,7 @@ describe('Form Builder App', () => {
   test('should have Questions component', () => {
     const wrapper = mount( <Questions formQuestions={fakeQuestions.formQuestions} updateAnswer={updateAnswer} /> );
     const label = wrapper.find('[htmlFor="Gender"]');
-    expect(label.text()).toBe('Gender')
+    expect(label.text()).toBe('Gender');
     const input = wrapper.find('input[type="text"]');
     input.simulate('focus');
     input.simulate('change', { target: { value: 'Dumy text' } });

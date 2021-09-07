@@ -2,34 +2,36 @@ import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import { BrowserRouter as Router } from "react-router-dom";
-import FormLists from "./FormLists";
+import FormView from "./FormView";
 import initialState from '../mockTestData';
 
 describe("Form Builder App", () => {
+  //Mocking useparams
+  jest.mock("react-router-dom", () => ({
+    ...jest.requireActual("react-router-dom"),
+    useParams: jest.fn().mockReturnValue({ id: 1234 }),
+  }));
+  
   const mockStore = configureStore();
-  let store, wrapper, table, row, header;
+  let store, wrapper;
 
   beforeAll(() => {
     store = mockStore(initialState);
     wrapper = mount(
       <Provider store={store}>
         <Router>
-          <FormLists />
+          <FormView />
         </Router>
       </Provider>
     );
-    table = wrapper.find("table");
-    row = table.find("tr");
-    header = table.find("th");
   });
 
   afterAll(() => {
     wrapper.unmount();
   });
 
-  test("should have FormLists component", () => {
-    expect(table).toHaveLength(1);
-    expect(row).toHaveLength(2);
-    expect(header).toHaveLength(4);
+  test("should have FormView component", () => {
+    console.log(wrapper.debug());
+    //TO be continue
   });
 });
