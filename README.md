@@ -1,62 +1,70 @@
-# App name
-ITSM-Admin-Layout
+# Getting Started with Create React App
 
-# App Description
-This app is used to display modules/submodules in the PIER admin tool. Currently this app is consuming child app called ITSM-Admin-App only.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# App Integration
-App Tag - __itsm-admin-layout__  
-Tag Props -
-__userid__ - `String`
+## Available Scripts
 
-# How to integrate Module and Submodule menu in the app?
+In the project directory, you can run:
 
-**Step 1.** To diplay menu in the module dropdown we need to insert module name and it's submodule name in to the Database side.  
+### `npm start`
 
-To add menu in the Database we have to insert our module & submodule name in the existing JSON. 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You will get existing JSON via below API call.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-[https://localhost:3000/api/userPref/getFavorites?favoriteName=itsm-admin-menu-layout](https://localhost:3000/api/userPref/getFavorites?favoriteName=itsm-admin-menu-layout)
+### `npm test`
 
-You have to add your own JSON for new module & submodules as below.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
- ```bash
- {  
-      `module_name`: `Your module name goes here which will display in the module dropdown`,  
-      `display_header_name`: `String`, (Your module display name goes here)  
-      `display_order`: `Number`, (Your module name will be display in ascending order by providing numeric value)  
-      `display_name`: `String`,  (Noy in use as of now)   
-      `writeaccess_feature`: `STRING`, (MODULENAME_READ)  
-      `isactive`: `Number`, (1 or 0 ) 1 means active and 0 means inactive  
-      `is_default`: `Number`, (1 or 0) To display by default    
-      `submodules`:  [  
-        {  
-          `module_name`: `String`, (Your submodule name goes here which will display in the header bar)  
-          `display_name`: `String`,  (Your submodule display name goes here)  
-          `is_default`: `Number`, (1 or 0) To display by default   
-          `has_access`: `String`,  
-          `isform`: `Boolean`  (If your submodule required to load initially form in the admin app)  
-        }  
-      ]  
-  }
- ```
-    
-**Step 2.** After preparing above JSON you have to update the existing JSON via CRUD API.  
+### `npm run build`
 
-**Note:** You will get some existing records in above mentioned API call response. So you have to add your own JSON in to the existing JSON and then need to update. You will get other required details like userfavId to update in above mentioned API response.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## CRUP API URLs with Envionment wise
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### For Dev environment: 
-[http://userpreference-svc-dev.dev.px-npe02b.cf.t-mobile.com/swagger-ui.html#/](http://userpreference-svc-dev.dev.px-npe02b.cf.t-mobile.com/swagger-ui.html#/)
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### For Test & UAT environment:
-[http://userpreference-svc-test.test.px-npe02b.cf.t-mobile.com/swagger-ui.html#/](http://userpreference-svc-test.test.px-npe02b.cf.t-mobile.com/swagger-ui.html#/)
+### `npm run eject`
 
-### For Prod environment:
-[https://userpreference-svc.apps.px-prd04.cf.t-mobile.com/swagger-ui.html#/](https://userpreference-svc.apps.px-prd04.cf.t-mobile.com/swagger-ui.html#/)
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-**End point name for update:** PUT /api/v1/userFavorite/{userfavId}
-**Payload** Your newly added JSON with the existing JSON.
-    
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
